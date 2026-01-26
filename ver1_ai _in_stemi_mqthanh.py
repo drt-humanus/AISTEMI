@@ -30,7 +30,7 @@ def load_page():
 #st.cache_data(suppress_st_warning=True)
 @st.cache_data
 def get_pickle_data():
-    download = open("D:/NC mortality NMCT ĐHYD/app/anngrace/deployed_annmodel_pca10_grace.sav", "rb")
+    download = open("deployed_annmodel_pca10_grace.sav", "rb")
     return pickle.load(download)
 
 def calculate_risk():
@@ -134,3 +134,4 @@ if st.session_state['load'] == 0:
 if submitted:
     load_page()
     no_load = show_user_input(user_input)
+
