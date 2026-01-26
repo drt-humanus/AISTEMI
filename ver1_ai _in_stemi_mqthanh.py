@@ -14,7 +14,7 @@ if 'load' not in st.session_state:
 
 def load_page():
     st.write("""
-    # [AISTEMI] AI IN PREDICTION OF MORTILITY OF STEMI
+    # [AIAM] AI IN PREDICTION OF MORTILITY IN ACUTE MYOCARDIAL INFARCTION
     (Ứng dụng AI tiên lượng tử vong trong nhồi máu cơ tim cấp)
     """)
     st.markdown(
@@ -134,4 +134,5 @@ if st.session_state['load'] == 0:
 if submitted:
     load_page()
     no_load = show_user_input(user_input)
+
 
