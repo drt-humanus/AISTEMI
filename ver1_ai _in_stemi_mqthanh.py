@@ -1,6 +1,3 @@
-# streamlit run "D:\NC mortality NMCT ĐHYD\app\anngrace\ver1_ai _in_stemi_mqthanh.py"
-
-
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -79,20 +76,19 @@ with st.sidebar.form(key ='Form1'):
     # Illustrate the left-side
     # Get User_data
     khongcolist = ["Không", "Có"]
-    killiplist = ["Class I","Class II","Class III","Class IV"]
-    clicnicaltypelist = ["Non-STEMI", "STEMI"]
-
-    killip = st.selectbox('Phân độ Killip', options=['Class I','Class II','Class III','Class IV'])
-    clicnicaltype = st.selectbox('Thể lâm sàng', options=['Non-STEMI','STEMI'])
-    rca = st.selectbox('Tổn thương RCA', options = ["Không", "Có"])
-    lda = st.selectbox('Tổn thương LAD', options = ["Không", "Có"])
-    smoking = st.selectbox('Hút thuốc lá', options = ["Không", "Có"])
-    aceiarb = st.selectbox('Sử dụng thuốc ACEi/ARB', options = ["Không", "Có"])
-    anemia = st.selectbox('Thiếu máu', options = ["Không", "Có"])
-    troponinadmission = st.number_input('Troponin I lúc nhập viện (ng/mL)', min_value=1.0, max_value=1000.0, value=15.0, step=0.1, format=f'%.1f', help='Nhập đến một chữ số thập phân')
     age = st.number_input('Tuổi', min_value=10, max_value=90, value=64, step=1)
+    clicnicaltype = st.selectbox('Thể lâm sàng', options=['Non-STEMI','STEMI'])
+    killiplist = ["Class I","Class II","Class III","Class IV"]
+    killip = st.selectbox('Phân độ Killip', options=['Class I','Class II','Class III','Class IV'])
+    smoking = st.selectbox('Hút thuốc lá', options = ["Không", "Có"])
     gensiniscore = st.number_input('Điểm số Gensini', min_value=1, max_value=200, value=9, step=1)
+    lda = st.selectbox('Tổn thương LAD', options = ["Không", "Có"])
+    rca = st.selectbox('Tổn thương RCA', options = ["Không", "Có"])
+    troponinadmission = st.number_input('Troponin I lúc nhập viện (ng/mL)', min_value=1.0, max_value=1000.0, value=15.0, step=0.1, format=f'%.1f', help='Nhập đến một chữ số thập phân')
+    anemia = st.selectbox('Thiếu máu', options = ["Không", "Có"])
+    aceiarb = st.selectbox('Sử dụng thuốc ACEi/ARB', options = ["Không", "Có"])
     graceadmission = st.number_input('Điểm số GRACE', min_value=1, max_value=300, value=9, step=1)
+
     st.markdown("""
             <style>
                 div.stButton > button:first-child {
@@ -110,16 +106,16 @@ with st.sidebar.form(key ='Form1'):
         """, unsafe_allow_html=True)
     submitted = st.form_submit_button(label = 'Đồng ý')
     #Store a dictionary into a variables
-    user_data = {'killip': killiplist.index(killip),
+    user_data = {'age': age,
                     'clicnicaltype': clicnicaltypelist.index(clicnicaltype),
-                    'rca': khongcolist.index(rca),
-                    'lda': khongcolist.index(lda),
+                    'killip': killiplist.index(killip),
                     'smoking': khongcolist.index(smoking),
-                    'aceiarb': khongcolist.index(aceiarb),
-                    'anemia': khongcolist.index(anemia),
-                    'troponinadmission': troponinadmission,
-                    'age': age,
                     'gensiniscore': gensiniscore,
+                    'lda': khongcolist.index(lda),
+                    'rca': khongcolist.index(rca),
+                    'troponinadmission': troponinadmission,
+                    'anemia': khongcolist.index(anemia),
+                    'aceiarb': khongcolist.index(aceiarb),
                     'graceadmission': graceadmission
                 }
     # Transform the data into a data frame
@@ -134,6 +130,7 @@ if st.session_state['load'] == 0:
 if submitted:
     load_page()
     no_load = show_user_input(user_input)
+
 
 
 
