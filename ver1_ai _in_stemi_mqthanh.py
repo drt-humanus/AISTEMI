@@ -77,6 +77,7 @@ with st.sidebar.form(key ='Form1'):
     # Get User_data
     khongcolist = ["Không", "Có"]
     age = st.number_input('Tuổi', min_value=10, max_value=90, value=64, step=1)
+    clicnicaltypelist = ["Non-STEMI", "STEMI"]
     clicnicaltype = st.selectbox('Thể lâm sàng', options=['Non-STEMI','STEMI'])
     killiplist = ["Class I","Class II","Class III","Class IV"]
     killip = st.selectbox('Phân độ Killip', options=['Class I','Class II','Class III','Class IV'])
@@ -130,6 +131,7 @@ if st.session_state['load'] == 0:
 if submitted:
     load_page()
     no_load = show_user_input(user_input)
+
 
 
 
